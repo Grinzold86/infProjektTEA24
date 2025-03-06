@@ -38,14 +38,17 @@ geradeEingabeZahl = True
 #normal
 rouletteZahl = random.randrange(0, 37)
 if rouletteZahl == eingabeZahl:
-    ergebnis  = True
+    ergebnisZahl  = True
 
 #gerade/ungerade
 if (rouletteZahl % 2) == 1:
-    gerade = False
+    geradeRouletteZahl = False
 
 if (eingabeZahl % 2) == 1:
-    gerade = False
+    geradeEingabeZahl = False
+
+if(geradeEingabeZahl==geradeRouletteZahl):
+    ergebnisGerade == True
 
 #Output
 
