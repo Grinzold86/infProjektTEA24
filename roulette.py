@@ -11,7 +11,7 @@
 ###################################################################################################
 # Projekt:  Roulette_TEA24  
 # Datei:    roulette.py  
-# Autor:    Linus Wohlgemuth, Nico Leder, ,   
+# Autor:    Linus Wohlgemuth, Nico Leder, Erhun Omuemu,   
 # Datum:    4.3.2025  
 # Version:  1.0   
 ###################################################################################################
