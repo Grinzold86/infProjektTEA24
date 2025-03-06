@@ -22,13 +22,33 @@
 ###################################################################################################                                                                         
 
 #Defines
-
+import random           #ist notwendig um eine zufällige Zahl zu generieren
+rouletteZahl = 0
+eingabeZahl = 0
+ergebnisZahl = False
+ergebnisGerade = False
+gewinn = 0
+geradeRouletteZahl = True
+geradeEingabeZahl = True
 
 #Input
-
+#erhuns job
 
 #Algorithmus
+#normal
+rouletteZahl = random.randrange(0, 37)
+if rouletteZahl == eingabeZahl:
+    ergebnisZahl  = True
 
+#gerade/ungerade
+if (rouletteZahl % 2) == 1:
+    geradeRouletteZahl = False
+
+if (eingabeZahl % 2) == 1:
+    geradeEingabeZahl = False
+
+if(geradeEingabeZahl==geradeRouletteZahl):
+    ergebnisGerade == True
 
 #Output
 
