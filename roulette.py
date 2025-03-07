@@ -48,7 +48,13 @@ if (eingabeZahl % 2) == 1:
     geradeEingabeZahl = False
 
 if(geradeEingabeZahl==geradeRouletteZahl):
-    ergebnisGerade == True
+    ergebnisGerade = True
+
+#Low(1-18)/High(19-36)
+if rouletteZahl >= 1 and rouletteZahl <= 18:
+    ergebnisLowHigh = True
+else: 
+    ergebnisLowHigh = False
 
 #Output
 
