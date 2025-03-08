@@ -35,11 +35,8 @@ ergebnisHigh = False
 
 #Input
 #erhuns job
-
-
-
-=======
-Auswahl = input("Wollen Sie auf eine Zahl (0-36), Gerade/Ungerade oder Low(1-18)/High(19-36) setzen)") #Eingabemöglichkeiten für Auswahl -> Zahl, Gerade/Ungerade, Low/High
+Name = input("Bitte geben Sie Ihren Namen ein")
+print ("Hallo", Name, "Willkommen zu unserem Roulette Spiel")
 
 
 
