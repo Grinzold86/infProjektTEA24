@@ -33,6 +33,12 @@ geradeEingabeZahl = True
 
 #Input
 #erhuns job
+Name = input("Gib dein Namen ein: ") 
+print("Hallo", Name, "Wilkommen bei Roulette_TEA24")
+
+
+
+
 
 #Algorithmus
 #normal
