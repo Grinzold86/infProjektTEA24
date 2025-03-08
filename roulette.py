@@ -45,6 +45,22 @@ if (Altersabfrage == "Nein"):
 else:
     print("Achtung! Glückspiel kann süchtig machen")
 
+Auswahl = input("Wählen Sie ein Feld aus ('Zahl' 'Gerade' 'Ungerade' 'Low/High):")
+Gültige_werte = ["Zahl", "Grade/Ungerade", "Low/High"]
+if Auswahl not in Gültige_werte:
+    print("Ungültige Eingabe")
+    exit()
+
+    
+if (Auswahl == "Zahl"):
+    eingabezahl = int(input("Eine Zahl zwischen 0 und 37 eingeben"))
+   
+if (Auswahl == "Gerade/Ungerade"):
+    eingabezahl = int(input("Eine Zahl zwischen 0 und 37 eingeben"))
+
+if (Auswahl == "Low/High"):
+        eingabezahl = int(input("Eine Zahl zwischen 1 und 36 eingeben"))
+
 #Algorithmus
 
 rouletteZahl = random.randrange(0, 37) #Zufallszahl wird generiert
