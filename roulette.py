@@ -22,39 +22,53 @@
 ###################################################################################################                                                                         
 
 #Defines
-import random           #ist notwendig um eine zufällige Zahl zu generieren
-rouletteZahl = 0
-eingabeZahl = 0
-ergebnisZahl = False
+import random               #ist notwendig, um eine zufällige Zahl zu generieren
+rouletteZahl = 0            #ist die zufällige Zahl die generiert wird
+eingabeZahl = 0             #ist die Zahl die der Spieler eingibt
+ergebnisZahl = False       
 ergebnisGerade = False
 gewinn = 0
 geradeRouletteZahl = True
 geradeEingabeZahl = True
+ergebnisLow = False
+ergebnisHigh = False
 
 #Input
 #erhuns job
+Auswahl = input("Wollen Sie auf eine Zahl (0-36), Gerade/Ungerade oder Low(1-18)/High(19-36) setzen)") #Eingabemöglichkeiten für Auswahl -> Zahl, Gerade/Ungerade, Low/High
+
 
 #Algorithmus
+
+rouletteZahl = random.randrange(0, 37) #Zufallszahl wird generiert
+
 #normal
-rouletteZahl = random.randrange(0, 37)
-if rouletteZahl == eingabeZahl:
-    ergebnisZahl  = True
+if (Auswahl == "Zahl"):
+    if (rouletteZahl == eingabeZahl):
+        ergebnisZahl  = True
 
 #gerade/ungerade
-if (rouletteZahl % 2) == 1:
-    geradeRouletteZahl = False
+if (Auswahl == "Gerade/Ungerade"):
+    if (rouletteZahl % 2) == 1:
+        geradeRouletteZahl = False
 
-if (eingabeZahl % 2) == 1:
-    geradeEingabeZahl = False
+    if (eingabeZahl % 2) == 1:
+        geradeEingabeZahl = False
 
-if(geradeEingabeZahl==geradeRouletteZahl):
-    ergebnisGerade = True
+    if(geradeEingabeZahl==geradeRouletteZahl):
+        ergebnisGerade = True
 
 #Low(1-18)/High(19-36)
-if (rouletteZahl >= 1) and (rouletteZahl <= 18):
-    ergebnisLowHigh = True
-else: 
-    ergebnisLowHigh = False
+if (Auswahl == "Low/High"):
+    if (rouletteZahl >= 1) and (rouletteZahl <= 18):
+        ergebnisLow = True
+
+    if (rouletteZahl >= 19) and (rouletteZahl <= 36):
+        ergebnisHigh = True 
+
+    if (rouletteZahl == 0):
+        ergebnisLow = False
+        ergebnisHigh = False
 
 #Output
 
