@@ -38,7 +38,12 @@ ergebnisHigh = False
 Name = input("Bitte geben Sie Ihren Namen ein")
 print ("Hallo", Name, "Willkommen zu unserem Roulette Spiel")
 
-
+Altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein)")
+if (Altersabfrage == "Nein"):
+    print("Sorry, Sie sind nicht alt genug")
+    exit()
+else:
+    print("Achtung! Glückspiel kann süchtig machen")
 
 #Algorithmus
 
