@@ -35,8 +35,15 @@ ergebnisHigh = False
 
 #Input
 #erhuns job
-Auswahl = input("Wollen Sie auf eine Zahl (0-36), Gerade/Ungerade oder Low(1-18)/High(19-36) setzen)") #Eingabemöglichkeiten für Auswahl -> Zahl, Gerade/Ungerade, Low/High
+Name = input("Bitte geben Sie Ihren Namen ein")
+print ("Hallo", Name, "Willkommen zu unserem Roulette Spiel")
 
+Altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein)")
+if (Altersabfrage == "Nein"):
+    print("Sorry, Sie sind nicht alt genug")
+    exit()
+else:
+    print("Achtung! Glückspiel kann süchtig machen")
 
 #Algorithmus
 
