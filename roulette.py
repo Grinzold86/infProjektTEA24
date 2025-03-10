@@ -11,7 +11,7 @@
 ###################################################################################################
 # Projekt:  Roulette_TEA24  
 # Datei:    roulette.py  
-# Autor:    Linus Wohlgemuth, Nico Leder, Erhun Omuemu,   
+# Autor:    Linus Wohlgemuth (Grinzold86), Nico Leder, Erhun Omuemu,   
 # Datum:    4.3.2025  
 # Version:  1.0   
 ###################################################################################################
@@ -29,7 +29,6 @@ ergebnisZahl = False        #Auswertung, ob richtige Zahl getippt
 ergebnisGerade = False      #Auswertung, ob gerade/ungerade getippt
 gewinn = 0                  #Variable für Gewinnberechnung 
 geradeRouletteZahl = True   
-geradeEingabeZahl = True
 ergebnisLow = False
 ergebnisHigh = False
 
@@ -41,7 +40,7 @@ ergebnisHigh = False
 Name = input("Bitte geben Sie Ihren Namen ein ")
 print ("Hallo", Name, "Willkommen zu unserem Roulette Spiel")
 
-Altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein)").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
+Altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein) ").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
 if (Altersabfrage == "ja"):
     print("Achtung! Glückspiel kann süchtig machen")
     
@@ -51,61 +50,75 @@ else:
 
 
 while True:                    #while Schleife prüft Fehleingaben und lässt Korrektur zu ohne das Programm zu beenden
-    Auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'):").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
+    Auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'): ").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
     if Auswahl in ["zahl", "gerade/ungerade", "low/high"]:
         break                   #Endet nur, wenn einer der geforderten Werte eingegeben wurde
-    print("Ungültige Eingabe,geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein ")
+    print("Ungültige Eingabe, geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein ")
     
-
     
 if (Auswahl == "zahl"):
     eingabeZahl = int(input("Eine Zahl zwischen 0 und 36 eingeben ")) #ließt Tipp ein und castet als Int
  
-if (Auswahl == "gerade/ungerade"):
+elif (Auswahl == "gerade/ungerade"):
     while True:
         eingabeZahl = (input("Setzen Sie auf Gerade oder Ungerade? ").lower().strip())
         if eingabeZahl in ["gerade", "ungerade"]:
             break
         print("ungültige Eingabe!")
 
-if (Auswahl == "low/high"):
+elif (Auswahl == "low/high"):
         while True:
             eingabeZahl = (input("Bitte wählen 'LOW' oder 'HIGH' ")).lower().strip()
             if eingabeZahl in ["low", "high"]:
                 break
             print("ungültige Eingabe")
+else:
+    print("Fehler!")
+    exit()
 
 #Algorithmus
 
 rouletteZahl = random.randrange(0, 37) #Zufallszahl (0-36 inklusive) wird generiert
 
-#normal
+#normal/zahl
 if (Auswahl == "zahl"):
     if (rouletteZahl == eingabeZahl):
         ergebnisZahl  = True
 
 #gerade/ungerade
-if (Auswahl == "gerade/ungerade"):
+elif (Auswahl == "gerade/ungerade"):
     if (rouletteZahl % 2) == 1:
         geradeRouletteZahl = False
+    else:
+        geradeRouletteZahl = True
 
-    if (eingabeZahl % 2) == 1:
-        geradeEingabeZahl = False
-
-    if(geradeEingabeZahl==geradeRouletteZahl):
+    if(eingabeZahl == "gerade") and (geradeRouletteZahl == True):
         ergebnisGerade = True
 
-#Low(1-18)/High(19-36)
-if (Auswahl == "low/high"):
-    if (rouletteZahl >= 1) and (rouletteZahl <= 18):
-        ergebnisLow = True
+    elif(eingabeZahl == "ungerade") and (geradeRouletteZahl == False):
+        ergebnisGerade = True
+        
+    else:
+        ergebnisGerade = False
 
-    if (rouletteZahl >= 19) and (rouletteZahl <= 36):
+#Low(1-18)/High(19-36)
+elif (Auswahl == "low/high"):
+    if (rouletteZahl >= 1) and (rouletteZahl <= 18) and (eingabeZahl == "low"):
+        ergebnisLow = True
+    else:
+        ergebnisLow = False
+
+    if (rouletteZahl >= 19) and (rouletteZahl <= 36) and (eingabeZahl == "high"):
         ergebnisHigh = True 
+    else:
+        ergebnisHigh = False
 
     if (rouletteZahl == 0):
         ergebnisLow = False
         ergebnisHigh = False
+else:
+    print("Fehler!")
+    exit()
 
 #Output
 
