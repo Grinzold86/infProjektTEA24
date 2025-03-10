@@ -60,8 +60,19 @@ elif information == "nein":
 else:
     print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
     
-Gewinnabfrage = int(input("Wie viel möchten Sie setzen? ")) #liest Einsatz ein 
-print(f"Du hast ${Gewinnabfrage} gesetzt")
+while True:
+    try:
+        Gewinnabfrage = int(input("Wie viel möchten Sie setzen? (Mindestens 1$): "))
+        
+        if Gewinnabfrage > 0:  # Prüfen, ob die Eingabe positiv ist
+            break  # Schleife verlassen, wenn die Eingabe korrekt ist
+        else:
+            print("❌ Bitte geben Sie eine positive Zahl größer als 0 ein!")
+    
+    except ValueError:  # Falls eine ungültige Eingabe (z. B. Buchstaben) gemacht wurde
+        print("❌ Ungültige Eingabe! Bitte eine ganze Zahl eingeben.")
+
+print(f"Du hast ${Gewinnabfrage} gesetzt.")
 
 
 
