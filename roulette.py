@@ -159,6 +159,19 @@ else:
     exit()
 
 #Output
+print("\nDie Roulette-Zahl ist: {rouletteZahl}")
+
+if ergebnisZahl:
+    gewinn = einsatz * 35
+    print("Herzlichen Glückwunsch {name}, Sie haben auf die richtige Zahl gesetzt und haben {gewinn} Euro gewonnen!")
+elif ergebnisGerade or ergebnisLow or ergebnisHigh:
+    gewinn = einsatz * 2
+    print("Glückwunsch {name}, Sie haben gewonnen und erhalten {gewinn} Euro!")
+else:
+    print("Leider haben Sie verloren, {name}. Ihr Einsatz von {einsatz} haben sie lider verloren.")
+
+#Ende
+print("\nVielen Dank fürs Spielen! Wir hoffen, Sie hatten ihren Spaß.")
 
 
 
