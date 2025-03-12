@@ -38,42 +38,60 @@ ergebnisHigh = False
 #!!! Dran denken, Variablen dann auch mit kleinbuchstaben abfragen !!!
 #erhuns job
 
-Name = input("Bitte geben Sie Ihren Namen ein ")
-print ("Hallo", Name, "Willkommen zu unserem Roulette Spiel")
+name = input("Bitte geben Sie Ihren Namen ein ")
+print ("Hallo", name, "Willkommen zu unserem Roulette Spiel")
 
-Altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein)").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
-if (Altersabfrage == "ja"):
+altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein)").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
+if (altersabfrage == "ja"):
     print("Achtung! Glückspiel kann süchtig machen")
     
 else:
     print("Sorry, Sie sind nicht alt genug!")
     exit()
 
+information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein)").lower().strip() #liest Information bei bedarf ein
+if information == "ja":
+    print("\n Spielregeln für Roulette")
+    print("1. Setzen Sie einen Betrag.")
+    print("2. Wählen Sie ein Feld aus.")
+    print("3. Viel Glück!\n")
+elif information == "nein":
+    print("\nViel Glück!\n")
+else:
+    print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
+    
+gewinn_abfrage = input("Wie hoch ist Ihr Einsatz?")
+print("Ihr Einsatz beträgt", gewinn_abfrage, "Euro")
+try:
+    gewinn = int(gewinn_abfrage) 
+except:
+    print("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.")
+
+
+
 
 while True:                    #while Schleife prüft Fehleingaben und lässt Korrektur zu ohne das Programm zu beenden
-    Auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'):").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
-    if Auswahl in ["zahl", "gerade/ungerade", "low/high"]:
+    auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'):").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
+    if auswahl in ["zahl", "gerade/ungerade", "low/high"]:
         break                   #Endet nur, wenn einer der geforderten Werte eingegeben wurde
     print("Ungültige Eingabe,geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein ")
     
-
-    
-if (Auswahl == "zahl"):
+if (auswahl == "zahl"):
     eingabeZahl = int(input("Eine Zahl zwischen 0 und 36 eingeben ")) #ließt Tipp ein und castet als Int
  
-if (Auswahl == "gerade/ungerade"):
+if (auswahl == "gerade/ungerade"):
     while True:
         eingabeZahl = (input("Setzen Sie auf Gerade oder Ungerade? ").lower().strip())
         if eingabeZahl in ["gerade", "ungerade"]:
             break
-        print("ungültige Eingabe!")
+        print("Ungültige eingabe!")
 
-if (Auswahl == "low/high"):
+if (auswahl == "low/high"):
         while True:
             eingabeZahl = (input("Bitte wählen 'LOW' oder 'HIGH' ")).lower().strip()
             if eingabeZahl in ["low", "high"]:
                 break
-            print("ungültige Eingabe")
+            print("Ungültige eingabe")
 
 #Algorithmus
 
