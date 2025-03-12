@@ -49,8 +49,10 @@ else:
     print("Sorry, Sie sind nicht alt genug!")
     exit()
 
+
 information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein)").lower().strip() #liest Information bei bedarf ein
 if information == "ja":
+
     print("\n Spielregeln für Roulette")
     print("1. Setzen Sie einen Betrag.")
     print("2. Wählen Sie ein Feld aus.")
@@ -60,6 +62,7 @@ elif information == "nein":
 else:
     print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
     
+
 gewinn_abfrage = input("Wie hoch ist Ihr Einsatz?")
 print("Ihr Einsatz beträgt", gewinn_abfrage, "Euro")
 try:
@@ -70,13 +73,16 @@ except:
 
 
 
+
 while True:                    #while Schleife prüft Fehleingaben und lässt Korrektur zu ohne das Programm zu beenden
     auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'):").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
     if auswahl in ["zahl", "gerade/ungerade", "low/high"]:
         break                   #Endet nur, wenn einer der geforderten Werte eingegeben wurde
     print("Ungültige Eingabe,geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein ")
+
     
 if (auswahl == "zahl"):
+
     eingabeZahl = int(input("Eine Zahl zwischen 0 und 36 eingeben ")) #ließt Tipp ein und castet als Int
  
 if (auswahl == "gerade/ungerade"):
