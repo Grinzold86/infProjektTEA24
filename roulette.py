@@ -33,6 +33,7 @@ geradeEingabeZahl = True
 ergebnisLow = False
 ergebnisHigh = False
 einsatz = 0
+einsatzAbfrage = 0
 
 ###INPUT###
 #Alle Programmrelevanten Eingabeabfragen mit .lower() und .strip() einlesen -> wandelt in Kleinbuchstaben und löscht überflüssige Leerzeichen
