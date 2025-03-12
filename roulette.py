@@ -11,7 +11,7 @@
 ###################################################################################################
 # Projekt:  Roulette_TEA24  
 # Datei:    roulette.py  
-# Autor:    Linus Wohlgemuth (Grinzold86), Nico Leder, Erhun Omuemu,   
+# Autor:    Linus Wohlgemuth (Grinzold86), Nico Leder (xNox33), Erhun Omuemu,   
 # Datum:    4.3.2025  
 # Version:  1.0   
 ###################################################################################################
@@ -32,6 +32,8 @@ geradeRouletteZahl = True
 geradeEingabeZahl = True
 ergebnisLow = False
 ergebnisHigh = False
+einsatz = 0
+einsatzAbfrage = 0
 
 ###INPUT###
 #Alle Programmrelevanten Eingabeabfragen mit .lower() und .strip() einlesen -> wandelt in Kleinbuchstaben und löscht überflüssige Leerzeichen
@@ -39,46 +41,56 @@ ergebnisHigh = False
 #erhuns job
 
 name = input("Bitte geben Sie Ihren Namen ein ")
-print ("Hallo", name, "Willkommen zu unserem Roulette Spiel")
+print ("Hallo", name, "Willkommen zu unserem Roulette Spiel!\n")
 
-altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein) ").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
-if (altersabfrage == "ja"):
-    print("Achtung! Glückspiel kann süchtig machen")
-    
-else:
-    print("Sorry, Sie sind nicht alt genug!")
-    exit()
+while True:  
+
+    altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein) ").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
+    if(altersabfrage) in ["ja","nein"]:
+
+        if (altersabfrage == "ja"):
+            print("\nAchtung! Glückspiel kann süchtig machen!")
+            break
+        else:
+            print("Sorry, Sie sind nicht alt genug!")
+            exit()
+    else:
+        print ("Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
 
 
-information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein)").lower().strip() #liest Information bei bedarf ein
+information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein) ").lower().strip() #liest Information bei bedarf ein
 if information == "ja":
 
-    print("\n Spielregeln für Roulette")
+    print("\n --------Spielregeln für Roulette--------")
     print("1. Setzen Sie einen Betrag.")
-    print("2. Wählen Sie ein Feld aus.")
+    print("2. Wählen Sie aus, auf was Sie setzten möchten:\n -> Eine Zahl von 0 bis 36 \n -> Auf gerade/ungerade Felder\n -> obere Hälfte/untere Hälfte")
     print("3. Viel Glück!\n")
 elif information == "nein":
     print("\nViel Glück!\n")
 else:
     print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
     
+while True:                                                          #Schleife um Falscheingaben abzufangen und Korrektur zu ermöglichen
+    einsatzAbfrage = input("Wie hoch ist Ihr Einsatz?")
+    
 
-gewinn_abfrage = input("Wie hoch ist Ihr Einsatz?")
-print("Ihr Einsatz beträgt", gewinn_abfrage, "Euro")
-try:
-    gewinn = int(gewinn_abfrage) 
-except:
-    print("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.")
+    try:                                                            #-> versucht Eingabe als Zahl zu lesen
+        einsatz = int(einsatzAbfrage)
+        print("Ihr Einsatz beträgt", einsatz, "Euro")
+        break                                                       #...,wenn erfolgreich -> Schleife verlassen
+
+    except:                                                         #...,wenn nicht erfolgreich, Erneute Abfrage
+        print("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.\n")
 
 
 
 
 
-while True:                    #while Schleife prüft Fehleingaben und lässt Korrektur zu ohne das Programm zu beenden
+while True:                    #while Schleife prüft Fehleingaben und lässt Korrektur zu
     auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'): ").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
     if auswahl in ["zahl", "gerade/ungerade", "low/high"]:
         break                   #Endet nur, wenn einer der geforderten Werte eingegeben wurde
-    print("Ungültige Eingabe, geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein ")
+    print("Ungültige Eingabe, geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein \n")
 
     
 if (auswahl == "zahl"):
