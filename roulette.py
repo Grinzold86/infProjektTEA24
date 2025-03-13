@@ -57,21 +57,23 @@ while True:
     else:
         print ("Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
 
+while True:
+    information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein) ").lower().strip() #liest Information bei bedarf ein
+    if information == "ja":
 
-information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein) ").lower().strip() #liest Information bei bedarf ein
-if information == "ja":
-
-    print("\n --------Spielregeln für Roulette--------")
-    print("1. Setzen Sie einen Betrag.")
-    print("2. Wählen Sie aus, auf was Sie setzten möchten:\n -> Eine Zahl von 0 bis 36 \n -> Auf gerade/ungerade Felder\n -> obere Hälfte/untere Hälfte")
-    print("3. Viel Glück!\n")
-elif information == "nein":
-    print("\nViel Glück!\n")
-else:
-    print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
+        print("\n --------Spielregeln für Roulette--------")
+        print("1. Setzen Sie einen Betrag.")
+        print("2. Wählen Sie aus, auf was Sie setzten möchten:\n -> Eine Zahl von 0 bis 36 \n -> Auf gerade/ungerade Felder\n -> obere Hälfte/untere Hälfte")
+        print("3. Viel Glück!\n")
+        break
+    elif information == "nein":
+        print("\nViel Glück!\n")
+        break
+    else:
+        print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
     
 while True:                                                          #Schleife um Falscheingaben abzufangen und Korrektur zu ermöglichen
-    einsatzAbfrage = input("Wie hoch ist Ihr Einsatz?")
+    einsatzAbfrage = input("Wie hoch ist Ihr Einsatz? ")
     
 
     try:                                                            #-> versucht Eingabe als Zahl zu lesen
@@ -159,16 +161,16 @@ else:
     exit()
 
 #Output
-print("\nDie Roulette-Zahl ist: {rouletteZahl}")
+print(f"\nDie Roulette-Zahl ist: {rouletteZahl}")
 
 if ergebnisZahl:
     gewinn = einsatz * 35
-    print("Herzlichen Glückwunsch {name}, Sie haben auf die richtige Zahl gesetzt und haben {gewinn} Euro gewonnen!")
+    print(f"Herzlichen Glückwunsch {name}, Sie haben auf die richtige Zahl gesetzt und haben {gewinn} Euro gewonnen!")
 elif ergebnisGerade or ergebnisLow or ergebnisHigh:
     gewinn = einsatz * 2
-    print("Glückwunsch {name}, Sie haben gewonnen und erhalten {gewinn} Euro!")
+    print(f"Glückwunsch {name}, Sie haben gewonnen und erhalten {gewinn} Euro!")
 else:
-    print("Leider haben Sie verloren, {name}. Ihr Einsatz von {einsatz} haben sie leider verloren.")
+    print(f"Leider haben Sie verloren, {name}. Ihr Einsatz von {einsatz} haben sie leider verloren.")
 
 #Ende
 print("\nVielen Dank fürs Spielen! Wir hoffen, Sie hatten ihren Spaß.")
