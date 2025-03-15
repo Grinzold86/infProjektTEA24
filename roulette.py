@@ -34,6 +34,7 @@ ergebnisLow = False
 ergebnisHigh = False
 einsatz = 0
 einsatzAbfrage = 0
+highscore = 0
 
 
 ###INPUT###
@@ -175,8 +176,17 @@ while True:
     else:
         print(f"Leider haben Sie verloren, {name}. Ihr Einsatz von {einsatz} haben sie leider verloren.")
 
+    #Highscore 
+    highscore = 0
+
+    if gewinn > highscore:
+    highscore = gewinn
+    print(f"Neuer Highscore! Ihr bisher höchster Gewinn beträgt: {highscore} Euro")
+
+    print(f"\nAktueller Highscore: {highscore} Euro")
+    
     #Ende
-    #print("\nVielen Dank fürs Spielen! Wir hoffen, Sie hatten ihren Spaß.")
+    print("\nVielen Dank fürs Spielen! Wir hoffen, Sie hatten ihren Spaß.")
 
     while True:
         abfrageWiederholung = input("Möchten Sie weiter spielen? (Ja/Nein) ").lower().strip()
