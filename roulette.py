@@ -34,6 +34,7 @@ ergebnisLow = False
 ergebnisHigh = False
 einsatz = 0
 einsatzAbfrage = 0
+highscore = 0
 
 
 ###INPUT###
@@ -180,6 +181,7 @@ while True:
 
     if gewinn > highscore:
     highscore = gewinn
+    print(f"Neuer Highscore! Ihr bisher höchster Gewinn beträgt: {highscore} Euro")
 
     print(f"\nAktueller Highscore: {highscore} Euro")
     
