@@ -23,6 +23,7 @@
 
 #Defines
 import random               #ist notwendig, um eine zufällige Zahl zu generieren
+import time                 #ist notwendig, um eine Wartezeit zu generieren
 rouletteZahl = 0            #ist die zufällige Zahl, die generiert wird
 eingabeZahl = 0             #ist die Zahl, die der Spieler eingibt
 ergebnisZahl = False        #Auswertung, ob richtige Zahl getippt
@@ -37,94 +38,157 @@ einsatzAbfrage = 0
 highscore = 0
 
 
-###INPUT###
-#Alle Programmrelevanten Eingabeabfragen mit .lower() und .strip() einlesen -> wandelt in Kleinbuchstaben und löscht überflüssige Leerzeichen
-#!!! Dran denken, Variablen dann auch mit kleinbuchstaben abfragen !!!
-#erhuns job
+###Functions###
 
-name = input("Bitte geben Sie Ihren Namen ein ")
-print ("Hallo", name, "Willkommen zu unserem Roulette Spiel!\n")
+def begrüßung():
+    name = input("Bitte geben Sie Ihren Namen ein ")
+    print ("Hallo", name, "Willkommen zu unserem Roulette Spiel!\n")
+    return name
 
-while True:  
+def Altersabfrage():
+    while True:  
 
-    altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein) ").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
-    if(altersabfrage) in ["ja","nein"]:
+        altersabfrage = input("Sind Sie über 18 Jahre alt? (Ja/Nein) ").lower().strip() #lässt weiterspielen nur für den Fall 'ja' zu
+        if(altersabfrage) in ["ja","nein"]:
 
-        if (altersabfrage == "ja"):
-            print("\nAchtung! Glückspiel kann süchtig machen!")
-            break
+            if (altersabfrage == "ja"):
+                print("\nAchtung! Glückspiel kann süchtig machen!")
+                break
+            else:
+                print("Sorry, Sie sind nicht alt genug!")
+                exit()
         else:
-            print("Sorry, Sie sind nicht alt genug!")
-            exit()
-    else:
-        print ("Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
+            print ("Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
 
-while True:
-    information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein) ").lower().strip() #liest Information bei bedarf ein
-    if information == "ja":
+def spielregeln():
+    while True:
+        
+        information = input("Möchten Sie die Spielregeln wissen? (Ja/Nein) ").lower().strip() #liest Information bei bedarf ein
+        if information == "ja":
+            print("\n --------Spielregeln für Roulette--------")
+            print("1. Setzen Sie einen Betrag.")
+            print("2. Wählen Sie aus, auf was Sie setzten möchten:\n -> Eine Zahl von 0 bis 36 \n -> Auf gerade/ungerade Felder\n -> obere Hälfte/untere Hälfte")
+            print("3. Viel Glück!\n")
+            break
 
-        print("\n --------Spielregeln für Roulette--------")
-        print("1. Setzen Sie einen Betrag.")
-        print("2. Wählen Sie aus, auf was Sie setzten möchten:\n -> Eine Zahl von 0 bis 36 \n -> Auf gerade/ungerade Felder\n -> obere Hälfte/untere Hälfte")
-        print("3. Viel Glück!\n")
-        break
-    elif information == "nein":
-        print("\nViel Glück!\n")
-        break
-    else:
-        print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
-    
-while True:    
+        elif information == "nein":
+            print("\nViel Glück!\n")
+            break
 
-    while True:                                                          #Schleife um Falscheingaben abzufangen und Korrektur zu ermöglichen
+        else:
+            print("\n Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
+        
+def einsatzAbfrage():
+    while True:                                                         #Schleife um Falscheingaben abzufangen und Korrektur zu ermöglichen
         einsatzAbfrage = input("Wie hoch ist Ihr Einsatz? ")
-
-
         try:                                                            #-> versucht Eingabe als Zahl zu lesen
             einsatz = int(einsatzAbfrage)
             print("Ihr Einsatz beträgt", einsatz, "Euro")
-            break                                                       #...,wenn erfolgreich -> Schleife verlassen
-
+            return einsatz                                              #...,wenn erfolgreich -> Schleife verlassen
         except:                                                         #...,wenn nicht erfolgreich, Erneute Abfrage
             print("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.\n")
 
-
-
-
-
-    while True:                    #while Schleife prüft Fehleingaben und lässt Korrektur zu
+def auswahlAbfrage():                                                   
+    while True:                                                         #while Schleife prüft Fehleingaben und lässt Korrektur zu
         auswahl = input("Worauf möchten Sie setzen? ('Zahl' 'Gerade/Ungerade' 'Low/High'): ").lower().strip() #input wird in Kleinbuchstaben gewandelt und Leerzeichen gelöscht
         if auswahl in ["zahl", "gerade/ungerade", "low/high"]:
-            break                   #Endet nur, wenn einer der geforderten Werte eingegeben wurde
+            return auswahl
         print("Ungültige Eingabe, geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein \n")
 
+def zahlSetzen():
+    while True:
+        try:
+            eingabeZahl = int(input("Eine Zahl zwischen 0 und 36 eingeben ")) #ließt Tipp ein und castet als Int
+            if (0<= eingabeZahl <= 36):
+                return eingabeZahl
+        except:
+            print("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.\n")
+
+def geradeUngeradeSetzen():
+    while True:
+        eingabeZahl = (input("Setzen Sie auf Gerade oder Ungerade? ").lower().strip())
+        if eingabeZahl in ["gerade", "ungerade"]:
+                return eingabeZahl
+        else:
+            print("Ungültige Eingabe! Bitte 'gerade' oder 'ungerade' eingeben.")
+    
+def lowHighSetzen():
+    while True:
+            eingabeZahl = (input("Bitte wählen 'LOW' oder 'HIGH' ")).lower().strip()
+            if eingabeZahl in ["low", "high"]:
+                return eingabeZahl
+            else:
+                print("Ungültige Eingabe! Bitte 'low' oder 'high' eingeben.")
+            
+def rouletteDrehung():
+#Generiert kleine Animation für den Roulettevorgang und zufällige Roulette-Zahl zwischen 0und 36
+   print("""
+ ZZZZZ   III   EEEEE  H   H  U   U  N   N   GGGGG
+    Z     I    E      H   H  U   U  NN  N  G      
+   Z      I    EEEE   HHHHH  U   U  N N N  G  GG  
+  Z       I    E      H   H  U   U  N  NN  G   G  
+ ZZZZZ   III   EEEEE  H   H  UUUUU  N   N   GGGGG
+""")
+   i=0
+   for i in range(3):
+        print(".")
+        time.sleep(1)
+
+   return random.randrange(0, 37)
+    
+def highscoreCheck(gewinn, highscore):
+        if gewinn > highscore:
+            highscore = gewinn
+            print(f"Neuer Highscore! Ihr bisher höchster Gewinn beträgt: {highscore} Euro")
+        return highscore
+
+def abfrageWeiterspielen():
+        while True:
+            abfrageWiederholung = input("Möchten Sie weiter spielen? (Ja/Nein) ").lower().strip()
+            if(abfrageWiederholung == "nein"):
+                print("Vielen Dank für ihren Besuch!")
+                exit()
+            elif(abfrageWiederholung == "ja"):
+                print("Wir wünschen Ihnen noch viel Spaß!")
+                break
+            else:
+                print("Ungültige Eingabe! Bitte 'Ja' oder 'Nein' eingeben. \n")
+        
+    
+
+
+
+###INPUT###
+#Alle Programmrelevanten Eingabeabfragen mit .lower() und .strip() einlesen -> wandelt in Kleinbuchstaben und löscht überflüssige Leerzeichen
+#!!! Dran denken, Variablen dann auch mit kleinbuchstaben abfragen !!!
+
+#Spielbeginn
+name = begrüßung()
+Altersabfrage()
+spielregeln()
+
+while True:
+    einsatz = einsatzAbfrage()
+    auswahl = auswahlAbfrage()
 
     if (auswahl == "zahl"):
+        eingabeZahl = zahlSetzen()
 
-        eingabeZahl = int(input("Eine Zahl zwischen 0 und 36 eingeben ")) #ließt Tipp ein und castet als Int
-    
     elif (auswahl == "gerade/ungerade"):
-        while True:
-            eingabeZahl = (input("Setzen Sie auf Gerade oder Ungerade? ").lower().strip())
-            if eingabeZahl in ["gerade", "ungerade"]:
-                break
-            print("Ungültige eingabe!")
+        eingabeZahl = geradeUngeradeSetzen()
 
     elif (auswahl == "low/high"):
-            while True:
-                eingabeZahl = (input("Bitte wählen 'LOW' oder 'HIGH' ")).lower().strip()
-                if eingabeZahl in ["low", "high"]:
-                    break
-                print("Ungültige eingabe")
+        eingabeZahl = lowHighSetzen()
+
     else:
         print("Fehler!")
         exit()
 
-    #Algorithmus
+    rouletteZahl = rouletteDrehung()
+    ergebnisZahl = ergebnisGerade = ergebnisLow = ergebnisHigh = False
 
-    rouletteZahl = random.randrange(0, 37) #Zufallszahl (0-36 inklusive) wird generiert
-
-    #normal/zahl
+    #Auswahlverarbeitung
+    #Zahl
     if (auswahl == "zahl"):
         if (rouletteZahl == eingabeZahl):
             ergebnisZahl  = True
@@ -164,9 +228,8 @@ while True:
         print("Fehler!")
         exit()
 
-    #Output
+    #Output der Spielergebnisse
     print(f"\nDie Roulette-Zahl ist: {rouletteZahl}")
-
     if ergebnisZahl:
         gewinn = einsatz * 35
         print(f"Herzlichen Glückwunsch {name}, Sie haben auf die richtige Zahl gesetzt und haben {gewinn} Euro gewonnen!")
@@ -176,26 +239,9 @@ while True:
     else:
         print(f"Leider haben Sie verloren, {name}. Ihr Einsatz von {einsatz} haben sie leider verloren.")
 
-    #Highscore 
-    highscore = 0
-
-    if gewinn > highscore:
-    highscore = gewinn
-    print(f"Neuer Highscore! Ihr bisher höchster Gewinn beträgt: {highscore} Euro")
-
-    print(f"\nAktueller Highscore: {highscore} Euro")
+    #Überprüfung, ob Highscore geknackt wurde
+    highscore = highscoreCheck(gewinn, highscore)
     
-    #Ende
-    print("\nVielen Dank fürs Spielen! Wir hoffen, Sie hatten ihren Spaß.")
-
-    while True:
-        abfrageWiederholung = input("Möchten Sie weiter spielen? (Ja/Nein) ").lower().strip()
-        if(abfrageWiederholung == "nein"):
-            print("Vielen Dank für ihren Besuch!")
-            exit()
-        elif(abfrageWiederholung == "ja"):
-            print("Wir wünschen Ihnen noch viel Spaß!")
-            break
-        print("Ungültige eingabe")
-    
-
+    #Abfrage für weiteres Spielen
+    print("\nVielen Dank fürs Spielen! Wir hoffen, Sie hatten Ihren Spaß.")
+    abfrageWeiterspielen()
