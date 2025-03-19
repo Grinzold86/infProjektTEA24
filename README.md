@@ -1,11 +1,60 @@
-# infProjekt
- Informatik Projekt TEA24
-Unterteilung
-Input (1 Person):
-Hier geht's darum, dass das System den Benutzer fragt, auf was er setzen möchte und wie hoch der Einsatz ist. Wichtig ist dabei das die so verarbeitet werden, dass der Algorithmus was damit anfangen kann. 
-(Wenn man lustig ist, kann man mehrere Spieler sozusagen spielen lassen, aber das würde ich nur machen wenn man noch lust hat.)
-Algorithmus (2 Personen):
-Der Algorithmus verarbeitet die Eingabedaten (bspw. mit einem Dictonary) und speichert sie. Zusätzlich lässt er sich über einen randomizer eine Zahl zwischen 0 und 36 geben. Dann vergleicht er die zufällige Zahl mit der ausgewählten Zahl. Dabei prüft er ob eine Übereinstimmung besteht oder nicht und gibt das an den Output weiter.
-(Hier kann man noch zusätzliche Auswahlmöglichkeiten einbauen wie Gerade/Ungerade, Rot/Schwarz, etc. Muss man aber mit dem Input gemeinsam gestallten und auch nur wenn man noch Lust und Platz hat.)
-Output (1 Person): 
-Der Output errechnet dann den Gewinn und gibt diesen aus. Zusätzlich kann man noch so spielerein einbauen mit Dealersprüchen oder was halt Avi meinte
+
+
+```
+###################################################################################################
+# /$$$$$$$                      /$$             /$$     /$$              
+#| $$__  $$                    | $$            | $$    | $$              
+#| $$  \ $$  /$$$$$$  /$$   /$$| $$  /$$$$$$  /$$$$$$ /$$$$$$    /$$$$$$ 
+#| $$$$$$$/ /$$__  $$| $$  | $$| $$ /$$__  $$|_  $$_/|_  $$_/   /$$__  $$
+#| $$__  $$| $$  \ $$| $$  | $$| $$| $$$$$$$$  | $$    | $$    | $$$$$$$$
+#| $$  \ $$| $$  | $$| $$  | $$| $$| $$_____/  | $$ /$$| $$ /$$| $$_____/
+#| $$  | $$|  $$$$$$/|  $$$$$$/| $$|  $$$$$$$  |  $$$$/|  $$$$/|  $$$$$$$
+#|__/  |__/ \______/  \______/ |__/ \_______/   \___/   \___/   \_______/
+###################################################################################################
+
+### EINLEITUNG ###
+
+Roulette_TEA24 ist ein Pythonprogramm, welches die Simulation eines einfachen Roulette-Spiels darstellen soll.
+Dieses Spiel wird durch das Ausführen des Skripts https://github.com/Grinzold86/infProjektTEA24/blob/main/roulette.py
+direkt in der Konsole gespielt.
+
+### AUTOREN ###
+- Linus Wohlgemut (Grinzold86)
+- Nico Leder (xNox33)
+- Erhun Omuemu (TEA24EO8)
+- Avinash Suthakaran (Aviinash21-creator)
+
+### FEATURES ###
+- Begrüßung des Spielers nach Namenseingabe
+- Alterabfrage zur Einhaltung der gesetzlichen Vorschriften
+- Möglichkeit Spielregeln aufzurufen 
+- Abfrage Wettmöglichkeiten
+        - Zahl zwischen 0 und 36
+        - Gerade oder ungerade Zahlen
+        - Zahlenhälfte Low oder High
+- Zufallsgenerierung der Gewinnzahl
+- Gewinn-/Verlustberechnung basierend auf dem Einsatz
+        - Richtige Zahl: 35-facher Einsatz
+        - Richtig gerade/ungerade: 2-facher Einsatz
+        - Richtige Hälfte: 2-facher Einsatz
+- Highscore-Funktion
+- Möglichkeit das Spiel zu beenden oder erneut zu spielen
+
+### ANLEITUNG ###
+1. Starten Sie das Programm durch Ausführen des Skripts roulette.py
+2. Geben Sie Ihren Namen ein
+3. Geben Sie Ihr Alter ein
+4. Wählen Sie eine Wettmöglichkeit aus
+5. Geben Sie Ihren Einsatz ein
+6. Warten Sie auf die Zufallsgenerierung der Gewinnzahl
+7. Erhalten Sie Ihren Gewinn oder Verlust
+
+### HAFTUNGSAUSSCHLUSS ###
+Das Programm ist ein reines Simulationsspiel und dient lediglich zur Unterhaltung. Es wird keine Haftung für Verluste oder Schäden übernommen.
+Glücksspiel kann süchtig machen. Bei Problemen mit Glücksspiel wenden Sie sich bitte an die Beratungsstelle für Spielsucht. 0800 1 37 27 00 (kostenlos und anonym).
+###############################################################################################
+
+```
+
+
+
