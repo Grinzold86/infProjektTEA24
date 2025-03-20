@@ -40,6 +40,8 @@ highscore = 0
 
 ###Functions###
 
+  #Begrüßt den Spieler und fragt nach seinem Namen.
+  #Rückgabe: Name des Spielers
 def begrüßung():
     name = input("Bitte geben Sie Ihren Namen ein ")
     print ("Hallo", name, "Willkommen zu unserem Roulette Spiel!\n")
@@ -59,6 +61,9 @@ def Altersabfrage():
                 exit()
         else:
             print ("Ungültige Eingabe! Bitte geben Sie 'Ja' oder 'Nein' ein.\n")
+
+  #Bietet dem Spieler an, die Spielregeln zu lesen.
+  #Bei Bedarf werden die Regeln ausgegeben, ansonsten wird direkt fortgefahren
 
 def spielregeln():
     while True:
@@ -95,6 +100,9 @@ def auswahlAbfrage():
             return auswahl
         print("Ungültige Eingabe, geben Sie 'Zahl','Gerade/Ungerade' oder 'Low/High'ein \n")
 
+  #Fragt den Spieler nach einer Zahl zwischen 0 und 36.
+  #Stellt sicher, dass die Eingabe innerhalb des gültigen Bereichs liegt.
+
 def zahlSetzen():
     while True:
         try:
@@ -103,6 +111,8 @@ def zahlSetzen():
                 return eingabeZahl
         except:
             print("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.\n")
+
+  #Fragt den Spieler, ob er auf 'gerade' oder 'ungerade' setzen möchte.
 
 def geradeUngeradeSetzen():
     while True:
@@ -135,12 +145,18 @@ def rouletteDrehung():
         time.sleep(1)
 
    return random.randrange(0, 37)
-    
+
+  #Nach jeder Runde wird überprüft, ob der aktuelle Gewinn höher ist als der bisherige Highscore.
+  #Bei einem neuen Highscore wird dieser angezeigt.
+
 def highscoreCheck(gewinn, highscore):
         if gewinn > highscore:
             highscore = gewinn
             print(f"Neuer Highscore! Ihr bisher höchster Gewinn beträgt: {highscore} Euro")
         return highscore
+
+   #Fragt den Spieler, ob er weiterspielen möchte.
+   #Bei negativer Antwort wird das Programm beendet
 
 def abfrageWeiterspielen():
         while True:
