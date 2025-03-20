@@ -85,9 +85,9 @@ def spielregeln():
         
 def einsatzAbfrage():
     while True:                                                         #Schleife um Falscheingaben abzufangen und Korrektur zu ermöglichen
-        einsatzAbfrage = input("Wie hoch ist Ihr Einsatz? ")
+        einsatzEingabe = input("Wie hoch ist Ihr Einsatz? ")
         try:                                                            #-> versucht Eingabe als Zahl zu lesen
-            einsatz = int(einsatzAbfrage)
+            einsatz = int(einsatzEingabe)
             print("Ihr Einsatz beträgt", einsatz, "Euro")
             return einsatz                                              #...,wenn erfolgreich -> Schleife verlassen
         except:                                                         #...,wenn nicht erfolgreich, Erneute Abfrage
